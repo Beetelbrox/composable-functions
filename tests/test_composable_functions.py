@@ -1,12 +1,5 @@
-from composable_functions import I, __version__
-
-
-def test_version():
-    assert __version__ == "0.0.0"
-
-
-from composable_functions import _ComposableFunction, composable as c, compose, rcompose
-
+from composable.functions import I, _ComposableFunction, composable as c, compose, rcompose
+from functools import partial
 
 def add_one(x: int) -> int:
     return x + 1
@@ -54,6 +47,16 @@ class TestComposable:
     def test_backwards_composing_with_identity_produces_the_same_function(self):
         assert (c(add_one) << I)(5) == add_one(5)
         assert (I << add_one)(5) == add_one(5)
+    
+    def test_more_interesting_pipelines_can_be_built(self):
+        line = "Composition is very noice"
+        word_counter = (
+            I>> str.strip
+            >> str.split
+            >> len
+        )
+        assert word_counter(line) == 4
+        
 
 
 class TestCompose:
