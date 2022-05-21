@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "composable-functions"
+version = "0.0.0"
+description = "Function composition in python"
+authors = ["Francisco Javier Jurado Moreno <9376816+Beetelbrox@users.noreply.github.com>"]
+license = "MIT"
+readme = "README.md"
+
+keywords = [
+    "functional",
+    "functional programming",
+    "fp",
+    "composition",
+    "function composition",
+]
+
+include = [
+    "LICENSE",
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
