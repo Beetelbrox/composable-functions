@@ -1,5 +1,5 @@
 from composable.functions import I, _ComposableFunction, composable as c, compose, rcompose
-from functools import partial
+from functools import partial, reduce
 
 def add_one(x: int) -> int:
     return x + 1
@@ -51,12 +51,25 @@ class TestComposable:
     def test_more_interesting_pipelines_can_be_built(self):
         line = "Composition is very noice"
         word_counter = (
-            I>> str.strip
+            I
+            >> str.strip
             >> str.split
             >> len
         )
         assert word_counter(line) == 4
-        
+    
+    def test_mapreduce_wordcount_with_composing(self):
+        stream = (
+            "lorem ipsum dolor",
+            "sit amet, consectetur adipiscing elit",
+            "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+        )
+        count_words = (
+            I>> partial(map, str.split)
+            >> partial(map, len)
+            >> sum
+        )
+        assert count_words(stream) == 19
 
 
 class TestCompose:

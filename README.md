@@ -39,14 +39,14 @@ def add_one(x: int) -> int:
 
 add_three = add_one >> add_one >> add_one
 ```
-You can build more complex pipelines by composing simple functions:
+Complex pipelines can be built by reusing simple functions:
 ```python
 from composable.functions import compose
-from functools import partial
+import io
 
-line = "Composition is very noice"
+fake_stream
 word_counter = (
-    I>> str.strip
+    I >> str.strip
     >> str.split
     >> len
 )
