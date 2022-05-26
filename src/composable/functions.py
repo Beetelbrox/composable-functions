@@ -55,6 +55,9 @@ class _ComposableFunction:
         """
         return self.compose(other)
 
+    def __ror__(self, value):
+        return self.__call__(value)
+
 
 composable = _ComposableFunction
 identity = _ComposableFunction(_identity)

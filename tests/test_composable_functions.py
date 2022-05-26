@@ -51,8 +51,7 @@ class TestComposable:
     def test_more_interesting_pipelines_can_be_built(self):
         line = "Composition is very noice"
         word_counter = (
-            I
-            >> str.strip
+            I>> str.strip
             >> str.split
             >> len
         )
@@ -88,3 +87,11 @@ class TestCompose:
     def test_backward_compose_composes_functions_in_right_order(self):
         fn = rcompose(add_one, add_two, times_two)
         assert fn(5) == (times_two(add_two(add_one(5))))
+    
+    def test_pipe(self):
+        
+        val = [1,2,3,4] | (
+            I>> partial(map, lambda x: x + 1)
+            >> partial(map, lambda x: x + 1)
+        )
+        assert list(val) == [3,4,5,6]

@@ -2,7 +2,7 @@
 name = "composable-functions"
 version = "0.0.0"
 description = "Function composition in python"
-authors = ["Francisco Javier Jurado Moreno <9376816+Beetelbrox@users.noreply.github.com>"]
+authors = ["Francisco J. Jurado Moreno <9376816+Beetelbrox@users.noreply.github.com>"]
 license = "MIT"
 readme = "README.md"
 
@@ -12,6 +12,10 @@ keywords = [
     "fp",
     "composition",
     "function composition",
+]
+
+packages = [
+    {include = "composable", from="src"}
 ]
 
 include = [
